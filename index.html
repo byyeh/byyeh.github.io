@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bowie Yeh, Mechanical Design Engineer</title>
+<meta name="description" content="Bowie Yeh is a mechanical design engineer and M.S.E. student at the University of Michigan, designing mechanisms from consumer electronics to research hardware.">
+<meta property="og:title" content="Bowie Yeh, Mechanical Design Engineer">
+<meta property="og:description" content="Mechanism design, from consumer electronics to research hardware. Logitech, Wistron, University of Michigan.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://byyeh.github.io/assets/img/og.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<a class="skip" href="#projects">Skip to projects</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#home">Bowie Yeh</a>
+    <nav aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="cv-link" href="assets/CV_Bowie_Yeh.pdf" download>Download CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section id="home" class="view hero portrait wrap">
+  <div class="hero-text">
+    <h1>I design mechanisms, from consumer electronics to research hardware.</h1>
+    <p class="lede">I take a design from first sketch through CAD, simulation, prototype and test, and I have done it at Logitech, Wistron and two research labs.</p>
+    <p class="status">Looking for a mechanical design internship for summer 2027.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="mailto:byyeh@umich.edu">Email me</a>
+    </div>
+  </div>
+
+  <figure class="headshot">
+    <img src="assets/img/bowie-yeh.webp" width="900" height="900" alt="Portrait of Bowie Yeh">
+    <figcaption>
+      <strong>Bowie Yeh</strong>
+      <span>M.S. in Mechanical Engineering</span>
+      <span>University of Michigan</span>
+      <span>Research Assistant, NeuRRo Lab</span>
+    </figcaption>
+  </figure>
+
+</section>
+
+<section id="projects" class="view work">
+  <div class="wrap section-head">
+    <h2>Projects</h2>
+  </div>
+
+  <article class="project wrap" id="ankle-robot">
+    <header class="project-head">
+      <h3>Ankle Perturberator Robot <span class="tag">Ongoing research</span></h3>
+      <p class="meta">Neuromuscular and Rehabilitation Robotics Laboratory, University of Michigan, 2026 to present.<br>Mechanism design, contact and fatigue analysis, material selection.</p>
+    </header>
+    <div class="project-body">
+      <div class="project-text">
+        <p>Ankle impedance testing currently relies on an expensive lab robot that clinics can't access. I'm designing the latch for a low-cost alternative. It has to hold the platform against a 60 N·m torque, which puts 354 N on the latch, release on command from a solenoid, and reset with no power.</p>
+        <ul>
+          <li>Designed a self-relocking 7075-T6 latch hook in SolidWorks, placed about the platform pivot to minimize latch force</li>
+          <li>Ran hook stress and hook-to-shaft contact analysis in ANSYS, with frictionless contact and a refined mesh at the contact face</li>
+          <li>Chose a contactless LVIT over encoder and IMU options for motion sensing</li>
+        </ul>
+        <table class="fcf">
+          <caption>Results so far</caption>
+          <tr><th scope="row">Latch load analyzed</th><td>354 N, from 60 N·m platform torque</td></tr>
+          <tr><th scope="row">Hook, 7075-T6</th><td>39.4 MPa max. Yield SF 12.8, fatigue SF 4.1</td></tr>
+          <tr><th scope="row">Shaft, 1215 steel</th><td>73.5 MPa max. Yield SF 5.6, fatigue SF 3.7</td></tr>
+          <tr><th scope="row">Max deformation</th><td>0.016 mm</td></tr>
+          <tr><th scope="row">Next</th><td>Build and test</td></tr>
+        </table>
+      </div>
+      <div class="figs">
+        <figure class="span-2 latch-demo">
+          <div class="latch-stage">
+            <img id="latch-img-latched" src="assets/img/ankle-latched.webp" width="1200" height="900" alt="The latch shown solid inside the see-through robot assembly, with the shaft held in the hook">
+            <img id="latch-img-released" src="assets/img/ankle-released.webp" width="1200" height="900" alt="The latch shown solid inside the see-through robot assembly, with the shaft dropped out of the hook" hidden>
+          </div>
+          <figcaption>
+            <div class="seg" role="group" aria-label="Latch state">
+              <button type="button" aria-pressed="true" data-state="latched">Latched</button>
+              <button type="button" aria-pressed="false" data-state="released">Released</button>
+            </div>
+            <span id="latch-note">Holding 354 N with no power.</span>
+          </figcaption>
+        </figure>
+        <figure class="plot">
+          <img src="assets/img/ankle-fea-hook.webp" width="1260" height="728" alt="ANSYS stress plot of the latch hook, peak at the notch" loading="lazy">
+          <figcaption>Latch hook stress, 39.4 MPa max</figcaption>
+        </figure>
+        <figure class="plot">
+          <img src="assets/img/ankle-fea-shaft.webp" width="899" height="540" alt="ANSYS stress plot of the shaft, peak at the contact with the hook" loading="lazy">
+          <figcaption>Shaft stress in contact, 73.5 MPa max</figcaption>
+        </figure>
+        </div>
+    </div>
+  </article>
+
+  <article class="project wrap" id="mic-stack">
+    <header class="project-head">
+      <h3>MEMS microphone stack design</h3>
+      <p class="meta">Logitech, 2025.<br>Vibration isolation, acoustic sealing, experimental testing.</p>
+    </header>
+    <div class="project-body">
+      <div class="project-text">
+        <p>Microphone audio on a video conference bar was picking up speaker vibration and leaking sound. I redesigned the microphone stack-up to improve vibration isolation and acoustic sealing together, instead of trading one for the other.</p>
+        <ul>
+          <li>Designed four stack-ups in Creo, with tolerance analysis</li>
+          <li>Built a mockup of each one</li>
+          <li>Tested them on a custom DAQ and audio rig</li>
+        </ul>
+        <table class="fcf">
+          <caption>Results</caption>
+          <tr><th scope="row">Vibration isolation</th><td>+15 to 61%</td></tr>
+          <tr><th scope="row">Acoustic sealing</th><td>+22 to 41%</td></tr>
+          <tr><th scope="row">Outcome</th><td>2 product-tier options, submitted as a Logitech invention disclosure</td></tr>
+        </table>
+      </div>
+      <div class="figs">
+        <figure class="ref">
+          <img src="assets/img/mic-ref-video-bar.webp" width="1400" height="436" alt="A Logitech video conference bar with a fabric front and a center camera" loading="lazy">
+          <figcaption>A Logitech video conference bar, the kind of product this work was for. Public product image from Logitech.</figcaption>
+        </figure>
+        <figure class="ref">
+          <img src="assets/img/mic-ref-mic-array.webp" width="1400" height="787" alt="Cutaway render of a video bar showing the microphone array on its circuit board between the speaker and the camera" loading="lazy">
+          <figcaption>Microphone array inside a video bar, shown for reference. Public image from Logitech, not my design.</figcaption>
+        </figure>
+        <figure class="span-2 diagram">
+          <img src="assets/img/mic-test-setup.webp" width="1400" height="736" alt="Block diagram of the test setup: accelerometers into a DAQ and spectrum analyzer for vibration, and a test speaker, microphone PCB and reference microphone into an audio analyzer for sealing" loading="lazy">
+          <figcaption>Custom test setup for isolation and sealing</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project wrap" id="speaker-suspension">
+    <header class="project-head">
+      <h3>Speaker suspension design</h3>
+      <p class="meta">Logitech, 2025.<br>Suspension design, modal analysis, design of experiments.</p>
+    </header>
+    <div class="project-body">
+      <div class="project-text">
+        <p>In a tabletop video conferencing system, speaker vibration was leaking into the housing, and the bulky suspension was crowding the acoustic chamber. The goal was to isolate the speaker, free up chamber volume, and keep assembly simple.</p>
+        <ul>
+          <li>Designed compact rubber mounts in Creo</li>
+          <li>Added mounting ears for simple assembly</li>
+          <li>Tuned the design with ANSYS modal analysis</li>
+        </ul>
+        <table class="fcf">
+          <caption>Results</caption>
+          <tr><th scope="row">Vibration isolation</th><td>+32%</td></tr>
+          <tr><th scope="row">Suspension size</th><td>−66%</td></tr>
+          <tr><th scope="row">First mode</th><td>28 Hz</td></tr>
+        </table>
+      </div>
+      <div class="figs">
+        <figure class="span-2 photo">
+          <img src="assets/img/speaker-ref-sight.webp" width="1000" height="562" alt="Logitech Sight tabletop camera standing on a meeting room table" loading="lazy">
+          <figcaption>Logitech Sight, the kind of tabletop product this work was for. Public product photo, shown for reference.</figcaption>
+        </figure>
+        <figure class="span-2 photo">
+          <video src="assets/img/speaker-modal.mp4" poster="assets/img/speaker-modal-poster.jpg" width="808" height="454" muted loop playsinline controls preload="metadata" aria-label="Animation of the first vibration mode from ANSYS modal analysis"></video>
+          <figcaption>First mode shape from ANSYS modal analysis</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project wrap" id="hinge">
+    <header class="project-head">
+      <h3>Laptop hinge bracket optimization</h3>
+      <p class="meta">Wistron, 2024.<br>Sheet metal design, stress analysis, design for manufacturing.</p>
+    </header>
+    <div class="project-body">
+      <div class="project-text">
+        <p>A laptop screen took 4.2 s to settle after an impact, with peak bracket stress at 1121 MPa. I had to shorten the settling time with no change to the chassis, using stamping only.</p>
+        <ul>
+          <li>Iterated the stamped sheet metal geometry in Creo</li>
+          <li>Compared stress between designs in ANSYS</li>
+          <li>Validated prototypes with bouncing tests, using infrared laser sensors, force gauges and DAQ</li>
+        </ul>
+        <table class="fcf">
+          <caption>Results</caption>
+          <tr><th scope="row">Settling time</th><td>4.2 s → 2.5 s <span class="delta">−40%</span></td></tr>
+          <tr><th scope="row">Process</th><td>Stamping, a lower-cost alternative to MIM</td></tr>
+        </table>
+      </div>
+      <div class="figs">
+        <figure class="span-2">
+          <div class="stacked">
+            <div><span>Original</span><img src="assets/img/hinge-cad-original.webp" alt="Original hinge bracket, side view" loading="lazy"></div>
+            <div><span>Optimized</span><img src="assets/img/hinge-cad-optimized.webp" alt="Optimized hinge bracket, side view" loading="lazy"></div>
+          </div>
+          <figcaption>Design optimization in Creo</figcaption>
+        </figure>
+        <div class="span-2 trio">
+          <figure>
+            <img src="assets/img/hinge-stress-original.webp" alt="ANSYS stress plot of the original bracket" loading="lazy">
+            <figcaption>Stress, original</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/hinge-stress-optimized.webp" alt="ANSYS stress plot of the optimized bracket" loading="lazy">
+            <figcaption>Stress, optimized</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/hinge-bounce-test.webp" alt="Plot of screen displacement over time during a bouncing test" loading="lazy">
+            <figcaption>Bouncing test</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="project wrap" id="organ-on-chip">
+    <header class="project-head">
+      <h3>Organ-on-a-chip supply system</h3>
+      <p class="meta">Micro-Systems and Control Laboratory, National Tsing Hua University, 2023 to 2024.<br>System architecture, spring mechanism design, user workflow design.</p>
+    </header>
+    <div class="project-body">
+      <div class="project-text">
+        <p>Organ-on-a-chip experiments rely on costly electric syringe pumps, which keeps them inside the lab. I designed a compact, electricity-free instrument that replaces the usual pump, tubing and collector setup.</p>
+        <ul>
+          <li>Defined the system architecture and mapped the user workflow</li>
+          <li>Designed a constant-force-spring pressure module for stable pressure output</li>
+          <li>Modeled the full instrument in Inventor</li>
+        </ul>
+        <table class="fcf">
+          <caption>Results</caption>
+          <tr><th scope="row">Patent</th><td>Taiwan Invention Patent No. I893968, first inventor</td></tr>
+          <tr><th scope="row">Power required</th><td>None</td></tr>
+        </table>
+      </div>
+      <div class="figs">
+        <figure class="even">
+          <img src="assets/img/ooc-cad-module.webp" width="445" height="327" alt="CAD model of the spring-driven pressure module" loading="lazy">
+          <figcaption>Pressure module</figcaption>
+        </figure>
+        <figure class="even">
+          <img src="assets/img/ooc-cad-system.webp" width="430" height="438" alt="CAD model of the complete supply system" loading="lazy">
+          <figcaption>Complete system in Inventor</figcaption>
+        </figure>
+        <figure class="span-2 diagram wide">
+          <img src="assets/img/ooc-architecture.webp" width="1400" height="586" alt="Control block diagram from pressure supply module through flow control valve, drug tank and chip to sample storage, with the user flow chart below" loading="lazy">
+          <figcaption>Functional architecture and user workflow</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+</section>
+
+<div id="experience" class="view">
+<section class="wrap two-col">
+  <h2>Experience</h2>
+  <ol class="timeline">
+    <li>
+      <span class="logo logo-umich"><img src="assets/img/logos/umich.png" alt="University of Michigan"></span>
+      <div class="entry">
+        <h3>Research Assistant</h3>
+        <p class="when">Sep. 2026 to present</p>
+        <p class="org">Neuromuscular and Rehabilitation Robotics Laboratory, University of Michigan</p>
+        <p class="where">Ann Arbor, MI</p>
+        <p class="desc topic">Topic: Low-Cost Ankle Perturbation Robot Design for Clinical Impedance Testing</p>
+        <ul class="desc bullets">
+          <li>Designed a self-relocking, solenoid-released latch in SolidWorks that holds a 354 N spring load with zero-power reset, using leverage-based placement about the platform pivot to minimize latch force.</li>
+          <li>Verified the latch under worst-case loads through ANSYS stress and contact analysis, identifying the limiting failure mode and refining material selection and geometry for DFM.</li>
+          <li>Led motion-sensor selection by evaluating encoder, IMU, and LVIT options, choosing a contactless LVIT to preserve measurement accuracy and aligning interfaces with cross-functional teammates.</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="logo logo-logitech"><img src="assets/img/logos/logitech.png" alt="Logitech"></span>
+      <div class="entry">
+        <h3>Mechanical Engineering Intern</h3>
+        <p class="when">Mar. 2025 to Oct. 2025</p>
+        <p class="org">Logitech</p>
+        <p class="where">Hsinchu, Taiwan</p>
+        <ul class="desc bullets">
+          <li>Improved vibration isolation by 32% and reduced enclosure volume by 66% by designing a compact speaker suspension in Creo for tabletop video conferencing systems, validated through ANSYS modal analysis.</li>
+          <li>Boosted acoustic sealing by 41% and vibration isolation by 61% by designing and prototyping a shock-resistant microphone stacking structure with tolerance analysis for soundbar systems, submitted as a Logitech invention disclosure.</li>
+          <li>Tested rapid prototypes for vibration and acoustic sealing using DAQ systems, accelerometers, and spectrum analyzers, collaborating with cross-functional teams and joint design manufacturer (JDM) partners to refine designs.</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="logo logo-wistron"><img src="assets/img/logos/wistron.png" alt="Wistron"></span>
+      <div class="entry">
+        <h3>Mechanical Engineering Intern</h3>
+        <p class="when">Jul. 2024 to Aug. 2024</p>
+        <p class="org">Wistron</p>
+        <p class="where">Taipei, Taiwan</p>
+        <ul class="desc bullets">
+          <li>Reduced laptop screen settling time by 40% by redesigning a stamped sheet metal hinge in Creo, meeting performance requirements as a lower-cost alternative to metal injection molding (MIM).</li>
+          <li>Validated structural integrity through ANSYS stress analysis and tested prototypes using infrared laser sensors, force gauges, and DAQ.</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="logo logo-nthu"><img src="assets/img/logos/nthu.png" alt="National Tsing Hua University"></span>
+      <div class="entry">
+        <h3>Research Assistant</h3>
+        <p class="when">Nov. 2023 to Dec. 2024</p>
+        <p class="org">Micro-Systems and Control Laboratory, National Tsing Hua University</p>
+        <p class="where">Hsinchu, Taiwan</p>
+        <p class="desc topic">Topic: All-in-One Pressure and Liquid Supply System for Organ-on-a-Chip Experiments</p>
+        <ul class="desc bullets">
+          <li>Designed and patented a compact, electricity-free instrument for organ-on-a-chip experiments in Inventor, replacing conventional pump, tubing, and collector setups.</li>
+          <li>Developed a constant-force-spring-driven pressure module that delivers stable pressure output, enabling portable experiments outside the lab.</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="logo logo-star"><img src="assets/img/logos/star.png" alt="Student Society of Taiwan Advanced Rocketry"></span>
+      <div class="entry">
+        <h3>Avionics System Engineer</h3>
+        <p class="when">Dec. 2023 to Jul. 2024</p>
+        <p class="org">Student Society of Taiwan Advanced Rocketry, STAR</p>
+        <p class="where">Hybrid</p>
+        <ul class="desc bullets">
+          <li>Conducted research and gathered key data to support the early development of a self-landing rocket and its Thrust Vector Control (TVC) system.</li>
+          <li>Collaborated with structural and guidance/navigation teams to co-design the preliminary TVC system prototype.</li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="wrap two-col">
+  <h2>Education</h2>
+  <ul class="timeline">
+    <li>
+      <span class="logo logo-umich"><img src="assets/img/logos/umich.png" alt="University of Michigan"></span>
+      <div class="entry">
+        <h3>Master of Science in Mechanical Engineering</h3>
+        <p class="when">Aug. 2026 to May 2028 (expected)</p>
+        <p class="org">University of Michigan</p>
+        <p class="where">Ann Arbor, MI</p>
+      </div>
+    </li>
+    <li>
+      <span class="logo logo-nthu"><img src="assets/img/logos/nthu.png" alt="National Tsing Hua University"></span>
+      <div class="entry">
+        <h3>Bachelor of Science in Power Mechanical Engineering</h3>
+        <p class="when">Sep. 2021 to Jun. 2025</p>
+        <p class="org">National Tsing Hua University</p>
+        <p class="where">Hsinchu, Taiwan</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section class="wrap two-col">
+  <h2>Patent</h2>
+  <div class="plain-list">
+    <div>
+      <h3><a href="https://patents.google.com/patent/TWI893968B/en" rel="noopener">Pressure Supply Module and Liquid Supply System Having the Same</a></h3>
+      <p>Taiwan Invention Patent No. I893968, granted Aug. 11, 2025. <strong>First inventor.</strong><br>Patentee: National Tsing Hua University. Published as US 2026/0063148 A1 and CN 121630815 A.</p>
+      <p><a href="https://patents.google.com/patent/TWI893968B/en" rel="noopener">View the patent on Google Patents</a></p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section id="skills" class="view wrap two-col">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div>
+      <h3>Mechanical design</h3>
+      <p>Consumer electronics design and prototyping. DFM, DFA, GD&amp;T, tolerance analysis. Creo, SolidWorks, Inventor, Fusion, AutoCAD.</p>
+    </div>
+    <div>
+      <h3>Simulation and analysis</h3>
+      <p>Structural FEA for stress, contact and modal behavior. Dynamics, vibration and acoustic analysis. ANSYS, MATLAB.</p>
+    </div>
+    <div>
+      <h3>Testing and validation</h3>
+      <p>DAQ systems, accelerometers, spectrum analyzers. Vibration and acoustic testing. Infrared laser sensors, force gauges.</p>
+    </div>
+    <div>
+      <h3>Mechatronics and controls</h3>
+      <p>Control system architecture. Sensor selection across encoder, IMU and LVIT. Arduino, LTSpice.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="view contact">
+  <div class="wrap">
+    <h2>Let's talk about your team's next mechanism.</h2>
+    <ul>
+      <li><span>Email</span><a href="mailto:byyeh@umich.edu">byyeh@umich.edu</a></li>
+      <li><span>Phone</span><a href="tel:+17344500848">+1 (734) 450-0848</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/bowieyeh" rel="noopener">linkedin.com/in/bowieyeh</a></li>
+      <li><span>CV</span><a href="assets/CV_Bowie_Yeh.pdf" download>Download as PDF</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap site-footer">
+  <p>© 2026 Bo-Yi (Bowie) Yeh. Ann Arbor, Michigan.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
